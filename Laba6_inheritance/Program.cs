@@ -4,9 +4,9 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Animal dog = new("Корм для собак", "будка");
-        Animal cat = new("Корм для кошек", "Дом");
-        Animal horse = new("Сено", "Стойло");
+        Animal dog = new Dog("Корм для собак", "будка", "Бася");
+        Animal cat = new Cat("Корм для кошек", "Дом", "Снежок");
+        Animal horse = new Horse("Сено", "Стойло", "Коричневая");
         Vet vet = new();
         vet.treatAnimal(dog);
         vet.treatAnimal(cat);
@@ -31,22 +31,26 @@ class Animal
 }
 class Dog : Animal
 {
-    public Dog(string food, string location) : base(food, location)
+    string name;
+    public Dog(string food, string location, string name) : base(food, location)
     {
+        this.name = name;
     }
     public override void makeNoise() {
         Console.WriteLine("гав");
     }
     public override void eat()
     {
-        Console.WriteLine("Собака кушает");
+        Console.WriteLine("Собака кушает "+food);
     }
     public override void sleep() { Console.WriteLine("Собака спит"); }
 }
 class Cat : Animal
 {
-    public Cat(string food, string location) : base(food, location)
+    string name;
+    public Cat(string food, string location, string name) : base(food, location)
     {
+        this.name = name;
     }
     public override void makeNoise()
     {
@@ -54,14 +58,16 @@ class Cat : Animal
     }
     public override void eat()
     {
-        Console.WriteLine("Котик ест");
+        Console.WriteLine("Котик ест "+food);
     }
     public override void sleep() { Console.WriteLine("Кот спит"); }
 }
 class Horse : Animal
 {
-    public Horse(string food, string location) : base(food, location)
+    string color;
+    public Horse(string food, string location, string color) : base(food, location)
     {
+        this.color = color;
     }
     public override void makeNoise()
     {
@@ -69,7 +75,7 @@ class Horse : Animal
     }
     public override void eat()
     {
-        Console.WriteLine("Лошадь кушает");
+        Console.WriteLine("Лошадь кушает "+food);
     }
     public override void sleep() { Console.WriteLine("Лошадь спит"); }
 }
